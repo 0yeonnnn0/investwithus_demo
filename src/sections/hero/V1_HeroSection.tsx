@@ -35,7 +35,7 @@ function V1_HeroSection() {
   }, [firstTextComplete, secondTextComplete]);
 
   return (
-    <div className="flex flex-col gap-10 items-center shrink-0 w-full min-h-screen relative">
+    <div className="flex flex-col gap-10 items-center shrink-0 min-w-[1440px] w-full min-h-screen relative">
       <div
         className="absolute top-0 left-0 right-0 w-full h-[900px] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/bg/v1_hero.png')" }}

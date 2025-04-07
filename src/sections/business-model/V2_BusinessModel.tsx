@@ -25,7 +25,7 @@ function V2_BusinessModel() {
   return (
     <div
       id="business"
-      className="flex w-[1440px] pt-[120px] px-[132px] pb-[120px] flex-row gap-[94px] shrink-0"
+      className="flex min-w-[1440px] pt-[120px] px-[132px] pb-[60px] flex-row gap-[94px] shrink-0"
     >
       <Image
         src="/technology/OpenAPN.png"
@@ -34,6 +34,7 @@ function V2_BusinessModel() {
         height={720}
         style={{
           borderRadius: "1000px 1000px 10px 10px",
+          minWidth: "432px",
         }}
       />
       <div className="flex h-[727px] pt-[80px] pb-[42px] items-start flex-col gap-[40px]">

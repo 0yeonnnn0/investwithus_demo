@@ -4,7 +4,7 @@ function V1_Value() {
   return (
     <div
       id="funds"
-      className="flex flex-col items-start gap-[600px] shrink-0 px-0 pt-[160px] pb-[252px]"
+      className="flex flex-col min-w-[1440px] items-start gap-[600px] shrink-0 px-0 pt-[160px] pb-[60px]"
       style={{ backgroundImage: "url('/bg/v1_value.png')" }}
     >
       <div className="flex flex-col items-center gap-[32px] self-stretch px-[344px]">

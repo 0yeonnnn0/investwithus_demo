@@ -82,7 +82,7 @@ function V2_Opportunity() {
   return (
     <div
       id="opportunity"
-      className="flex w-full h-[1776px] pt-[216px] pb-[44px] flex-col justify-center items-center bg-white"
+      className="flex min-w-[1440px] w-full pt-[120px] pb-[44px] flex-col justify-center items-center bg-white"
     >
       <div className="flex flex-col items-center gap-[64px] self-stretch">
         <div className="flex w-[1440px] px-[196px] flex-col items-center gap-[20px]">

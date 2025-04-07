@@ -5,7 +5,7 @@ import { rethinkSans } from "@/lib/fonts";
 export default function Footer() {
   return (
     <footer
-      className={`w-full shrink-0 bg-[#03002A] pt-[120px] pb-10 bg-[url('/bg/bestia_bg.svg')] bg-cover bg-center ${rethinkSans.className}`}
+      className={`min-w-[1440px] w-full shrink-0 bg-[#03002A] pt-[120px] pb-10 bg-[url('/bg/bestia_bg.svg')] bg-cover bg-center ${rethinkSans.className}`}
     >
       <div className="flex w-[1440px] px-[200px]  pb-8 flex-col items-start gap-[116px] shrink-0">
         <div className="flex  justify-center items-center gap-[60px] self-stretch">

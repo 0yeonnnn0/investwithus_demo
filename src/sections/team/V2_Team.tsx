@@ -52,7 +52,7 @@ function TeamMember({ name, role, imageSrc, detail }: TeamMemberProps) {
           </div>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative min-w-[200px]">
         <Image
           src={imageSrc}
           alt={name}
@@ -85,7 +85,7 @@ function V2_Team() {
   return (
     <div
       id="team"
-      className="flex py-[120px] flex-col items-center gap-[92px] shrink-0"
+      className="flex min-w-[1440px] py-[120px] flex-col items-center gap-[92px] shrink-0"
     >
       <div className="flex w-full px-[200px] flex-col items-center gap-[16px] self-stretch">
         <span className="text-[#E68A00] text-center font-[Rethink Sans] text-[24px] font-bold leading-[160%]">
@@ -104,7 +104,7 @@ function V2_Team() {
           </span>
         </div>
       </div>
-      <div className="inline-flex w-full justify-center items-center gap-[120px] pl-[80px]">
+      <div className="inline-flex w-full justify-center items-center gap-[120px] md:gap-[80px] sm:gap-[40px] pl-[80px]">
         {teamMembers.map((member) => (
           <TeamMember
             key={member.name}

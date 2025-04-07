@@ -1,9 +1,21 @@
+"use client";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 
 function ReadyToInvest() {
+  const pathname = usePathname();
+  const isV1 = pathname === "/v1";
+  const isV2 = pathname === "/v2";
+
   return (
-    <div id="invest" className="flex pt-[85px] px-[122px] flex-col items-start">
+    <div
+      id="invest"
+      className={`flex min-w-[1440px] px-[122px] flex-col items-start ${
+        isV1 ? "bg-black" : isV2 ? "bg-white" : ""
+      }`}
+    >
       <div className="flex h-[300px] items-center self-stretch">
         <div className="flex w-[1196px] h-[300px] px-[92px] py-[64px] items-center rounded-[8px] bg-[#E68A00]">
           <div className="flex w-[700px] flex-col items-start gap-8 shrink-0">
@@ -27,7 +39,8 @@ function ReadyToInvest() {
               </span>
               <FontAwesomeIcon
                 icon={faBriefcase}
-                className="text-[#03002A] w-[28px]"
+                className="text-[#03002A]"
+                size="lg"
               />
             </div>
           </button>

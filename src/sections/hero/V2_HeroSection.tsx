@@ -1,6 +1,8 @@
 "use client";
 import RollingLogo from "@/components/RollingLogo";
-import { rethinkSans } from "@/lib/fonts";
+import { rethinkSans, urbanist } from "@/lib/fonts";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function V2_HeroSection() {
   return (
@@ -8,12 +10,14 @@ function V2_HeroSection() {
       id="home"
       className={`overflow-hidden bg-white ${rethinkSans.className}`}
     >
-      <div className="w-full max-md:max-w-full">
-        <div className="mt-40 w-full max-md:mt-10 max-md:max-w-full">
+      <div className="min-w-[1440px] w-full max-md:max-w-full">
+        <div className="mt-20 w-full max-md:mt-10 max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
             <div className="flex flex-col items-center self-center max-w-full w-[1080px]">
               <div className="z-10 px-2 w-full text-6xl font-bold leading-snug text-center text-slate-950 max-md:max-w-full max-md:text-4xl">
-                <span className="text-white text-center font-[Rethink_Sans] text-[32px] font-semibold leading-[2]">
+                <span
+                  className={`text-center ${rethinkSans.className} text-[32px] font-semibold leading-[2]`}
+                >
                   Share in Bestia&apos;s global terraformation
                 </span>
               </div>
@@ -56,19 +60,17 @@ function V2_HeroSection() {
                   <div className="flex flex-col mt-48 max-w-full min-h-[126px] w-[344px] max-md:mt-10">
                     <div className="flex flex-col justify-center items-center w-full text-2xl font-bold leading-relaxed rounded-2xl bg-amber-600 bg-opacity-80 min-h-[66px]">
                       <div className="flex gap-4 justify-center items-center">
-                        <img
-                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/96b8f682a6f789e59b5a5716181e0c13b67fa74b?placeholderIfAbsent=true"
-                          className="object-contain shrink-0 self-stretch my-auto aspect-square w-[22px]"
-                          alt="Invest Icon"
-                        />
+                        <FontAwesomeIcon icon={faArrowRight} />
                         <div className="self-stretch my-auto">
-                          <span className="text-white font-[Urbanist] text-[24px] font-bold leading-[1.6]">
+                          <span
+                            className={`text-white ${urbanist.className} text-[24px] font-bold leading-[1.6]`}
+                          >
                             I&apos;m Ready to Invest
                           </span>
                         </div>
                       </div>
                     </div>
-                    <div className="self-start mt-4 text-base text-center">
+                    <div className="self-center mt-4 text-base text-center">
                       $33,333.00 USD Minimum Investment
                     </div>
                   </div>

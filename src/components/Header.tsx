@@ -22,8 +22,8 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white shadow-sm">
-      <div className="flex h-[85px] px-[122px] py-6 flex-col items-center gap-[10px] self-stretch bg-white/40 shadow-[0_5px_25px_0_rgba(0,0,0,0.15)] backdrop-blur-[40px]">
-        <div className="flex w-[1196px] items-center gap-[304px] shrink-0">
+      <div className="flex min-w-[1440px] h-[85px] px-[122px] py-6 flex-col items-center gap-[10px] self-stretch bg-white/40 shadow-[0_5px_25px_0_rgba(0,0,0,0.15)] backdrop-blur-[40px]">
+        <div className="flex items-center gap-[304px] shrink-0">
           {/* 로고 */}
           <a
             href="#home"
@@ -31,13 +31,13 @@ export default function Header() {
               e.preventDefault();
               handleScroll("#home");
             }}
-            className="flex w-[82px] h-[37px] pr-0 pt-[11px] pb-[15px] pl-[10px] justify-center items-center gap-[10px] shrink-0"
+            className="flex p-2 justify-center items-center gap-2 shrink-0"
           >
             <Image
               src="/logo/Bestia_lg_black.svg"
               alt="Bestia Logo"
-              width={72}
-              height={19}
+              width={76}
+              height={20}
             />
           </a>
 
@@ -47,7 +47,7 @@ export default function Header() {
               {NAV_LINKS.map((link) => (
                 <li
                   key={link.href}
-                  className="text-black text-center font-[Urbanist] text-sm font-semibold"
+                  className="text-black text-center font-[Urbanist] text-sm font-semibold whitespace-nowrap"
                 >
                   <a
                     href={link.href}
@@ -68,7 +68,7 @@ export default function Header() {
               href="https://calendly.com/marco-dykim/30min?month=2025-03"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-[37px] px-3 py-[7px] justify-center items-center gap-[10px] rounded-[5px] bg-[#060052] text-white text-center font-[Urbanist] text-sm font-semibold"
+              className="flex min-w-[152px] h-[37px] px-3 py-[7px] justify-center items-center gap-[10px] rounded-[5px] bg-[#060052] text-white text-center font-[Urbanist] text-sm font-semibold"
             >
               Schedule a meeting
             </a>
