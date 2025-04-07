@@ -12,9 +12,9 @@ interface TechnologyCardProps {
 
 function TechnologyCard({
   title,
-  description,
+  //   description,
   image,
-  logo,
+  //   logo,
   className,
 }: TechnologyCardProps) {
   return (
