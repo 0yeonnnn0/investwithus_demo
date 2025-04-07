@@ -13,7 +13,9 @@ function V2_HeroSection() {
           <div className="flex flex-col w-full max-md:max-w-full">
             <div className="flex flex-col items-center self-center max-w-full w-[1080px]">
               <div className="z-10 px-2 w-full text-6xl font-bold leading-snug text-center text-slate-950 max-md:max-w-full max-md:text-4xl">
-                Share in Bestia's global terraformation
+                <span className="text-white text-center font-[Rethink_Sans] text-[32px] font-semibold leading-[2]">
+                  Share in Bestia&apos;s global terraformation
+                </span>
               </div>
               <div className="px-px max-w-full w-[979px]">
                 <div className="flex gap-5 max-md:flex-col max-md:">
@@ -60,7 +62,9 @@ function V2_HeroSection() {
                           alt="Invest Icon"
                         />
                         <div className="self-stretch my-auto">
-                          I'm Ready to Invest
+                          <span className="text-white font-[Urbanist] text-[24px] font-bold leading-[1.6]">
+                            I&apos;m Ready to Invest
+                          </span>
                         </div>
                       </div>
                     </div>

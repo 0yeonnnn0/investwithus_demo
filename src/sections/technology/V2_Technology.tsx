@@ -94,11 +94,10 @@ function V2_Technology() {
           </span>
         </div>
         <div className="w-[920px]">
-          <span className="text-black text-center mx-auto block font-[Urbanist] text-[24px] font-medium leading-[160%]">
-            Our AI fleet isn't waiting for permission to transform this
-            industry.
-            <br /> We're doing it now, creating wealth for those brave enough to
-            see what's happening.
+          <span className="text-white text-center font-[Rethink_Sans] text-[32px] font-semibold leading-[2]">
+            Our AI fleet isn&apos;t waiting for permission to transform this
+            <br /> We&apos;re doing it now, creating wealth for those brave enough to
+            see what&apos;s happening.
           </span>
         </div>
         <div className="flex flex-row gap-[20px] mt-10">

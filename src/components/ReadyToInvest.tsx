@@ -9,7 +9,7 @@ function ReadyToInvest() {
           <div className="flex w-[700px] flex-col items-start gap-8 shrink-0">
             <div className="flex h-[172px] flex-col justify-center items-start gap-8 shrink-0 self-stretch">
               <span className="text-white font-[Rethink Sans] text-[64px] font-bold leading-[160%]">
-                I'm Ready to Invest
+                I&apos;m Ready to Invest
               </span>
               <span className="text-[#212121] font-[Urbanist] text-[20px] font-semibold leading-[160%]">
                 We are accepting minimum investments of $33,333.00 USD. This

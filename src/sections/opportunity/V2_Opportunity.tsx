@@ -126,7 +126,7 @@ function V2_Opportunity() {
                   <div className="w-[295px] h-px bg-[#B2B2B2]" />
                   <div className="flex w-[340px] h-[57px] px-[60px] py-[12px] justify-center items-center gap-[10px] shrink-0 rounded-[15px] border-2 border-[#E68A00]">
                     <span className="text-black text-center font-[Urbanist] text-[24px] font-medium">
-                      Bestia's Model
+                      Bestia&apos;s Model
                     </span>
                   </div>
                   <div className="w-[295px] h-px bg-[#B2B2B2]" />
