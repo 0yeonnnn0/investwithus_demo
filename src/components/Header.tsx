@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -14,8 +13,6 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
-  const router = useRouter();
-
   const handleScroll = (href: string) => {
     const element = document.querySelector(href);
     if (element) {

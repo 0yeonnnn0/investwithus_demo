@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 interface FeatureCardProps {
   title: string;
@@ -9,6 +10,7 @@ interface FeatureCardProps {
   className?: string;
   variant?: "default" | "traditional";
   description?: string;
+  icon: string;
 }
 
 const FeatureCard = ({
@@ -19,21 +21,22 @@ const FeatureCard = ({
   className = "",
   variant = "default",
   description,
+  icon,
 }: FeatureCardProps) => {
   return (
     <div
-      className={`flex w-[300px] h-[290px] p-[36px] flex-col items-center justify-between gap-[10px] shrink-0 rounded-[8px] bg-[#F1F3F7] ${className}`}
+      className={`flex w-[300px] h-[290px] p-[24px] flex-col justify-between gap-[10px] shrink-0 rounded-[8px] bg-[#F1F3F7] ${className}`}
     >
-      <div className="flex flex-col items-start gap-[20px] self-stretch">
-        <div>+</div>
+      <div className="flex flex-col items-start gap-[16px] self-stretch">
+        <Image src={icon} alt="document" width={36} height={36} />
         <div className="flex flex-col items-start gap-[12px] self-stretch">
-          <span className="text-black font-[Urbanist] text-[20px] font-semibold leading-[160%]">
+          <span className="text-black font-[Urbanist] text-[16px] font-semibold leading-[160%]">
             {title}
           </span>
-          <div className={variant === "traditional" ? "h-auto" : "h-10"}>
+          <div className={"h-10"}>
             <div
               className={`flex flex-row items-end ${
-                variant === "traditional" ? "" : "h-[24px]"
+                variant === "traditional" ? "" : "h-[20px]"
               }`}
             >
               <span className="text-[#E68A00] font-[Urbanist] text-[16px] font-medium leading-[120%]">

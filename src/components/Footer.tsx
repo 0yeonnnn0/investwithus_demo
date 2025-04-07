@@ -39,7 +39,7 @@ export default function Footer() {
           {/* 우측 영역 */}
           <div className="flex h-[195px] flex-col justify-center items-start gap-[36px]">
             <p className="text-white text-[40px] font-bold leading-[140%]">
-              Share in Bestia's global terraformation <br /> as an early
+              Share in Bestia&apos;s global terraformation <br /> as an early
               investor.
             </p>
           </div>

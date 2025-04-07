@@ -1,18 +1,31 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 
 interface TeamMemberProps {
   name: string;
   role: string;
   imageSrc: string;
+  detail?: string;
 }
 
-function TeamMember({ name, role, imageSrc }: TeamMemberProps) {
+function TeamMember({ name, role, imageSrc, detail }: TeamMemberProps) {
   const [firstName, lastName] = name.split(" ");
+  const formattedDetail = detail?.split("\\n").map((line, index) => (
+    <span key={index}>
+      {line}
+      {index < detail.split("\\n").length - 1 && <br />}
+    </span>
+  ));
 
   return (
-    <div className="w-[540px] h-[520px] flex flex-row">
+    <div
+      className="w-[540px] h-[520px] flex flex-row group relative"
+      tabIndex={0}
+      aria-label={`${name} - ${role}`}
+    >
       <div className="inline-flex items-start gap-[16px] relative">
-        <div className="absolute left-0 top-0 w-[8px] h-[112px] bg-gradient-to-b from-[#E68A00] to-[#060052]" />
+        <div className="absolute left-0 top-0 w-[8px] h-[112px] group-hover:h-[212px] duration-300 bg-gradient-to-b from-[#E68A00] to-[#060052]" />
         <div className="flex w-[172px] flex-col items-start gap-[8px] pl-[16px]">
           <div className="flex flex-col gap-0">
             <span className="text-black font-[Urbanist] text-[32px] font-bold leading-[100%]">
@@ -22,18 +35,33 @@ function TeamMember({ name, role, imageSrc }: TeamMemberProps) {
               {lastName}
             </span>
           </div>
-          <span className="text-black font-[Urbanist] text-[16px] font-medium leading-[200%]">
-            {role}
-          </span>
+          <div>
+            <span className="text-black font-[Urbanist] text-[16px] font-medium leading-[120%]">
+              {role}
+            </span>
+            {detail && (
+              <div className="flex flex-col items-start gap-[12px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-black font-[Urbanist] text-[16px] font-medium leading-[120%]">
+                  {formattedDetail}
+                </span>
+                <button className="w-10 h-10 ml-2 flex items-center justify-center shadow-lg border-[#E68A00] rounded-[100px] p-[12px] cursor-pointer group-hover:">
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <Image
-        src={imageSrc}
-        alt={name}
-        width={456}
-        height={494}
-        style={{ marginLeft: "-90px" }}
-      />
+      <div className="relative">
+        <Image
+          src={imageSrc}
+          alt={name}
+          width={456}
+          height={494}
+          className="transition-transform duration-300 group-hover:scale-110 origin-bottom"
+          style={{ marginLeft: "-90px" }}
+        />
+      </div>
     </div>
   );
 }
@@ -44,11 +72,13 @@ function V2_Team() {
       name: "Mike Dusi",
       role: "Real estate investor",
       imageSrc: "/team/MikeDusi.png",
+      detail: "Entrepreneur \n Bestia co-founder",
     },
     {
       name: "Vak Sambath",
       role: "Serial entreprenuer",
       imageSrc: "/team/VakSambath.png",
+      detail: "20+ years in tech \n Bestia co-founder",
     },
   ];
 
@@ -81,6 +111,7 @@ function V2_Team() {
             name={member.name}
             role={member.role}
             imageSrc={member.imageSrc}
+            detail={member.detail}
           />
         ))}
       </div>

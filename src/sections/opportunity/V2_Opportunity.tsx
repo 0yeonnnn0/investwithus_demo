@@ -7,6 +7,7 @@ interface FeatureCardData {
   features: string[];
   variant?: "default" | "traditional";
   description?: string;
+  icon: string;
 }
 
 function V2_Opportunity() {
@@ -22,6 +23,7 @@ function V2_Opportunity() {
       ],
       variant: "traditional",
       description: "(based on $360,000 average home price)",
+      icon: "/opportunity/moneybag.svg",
     },
     {
       title: "Time-Based Costs",
@@ -32,6 +34,7 @@ function V2_Opportunity() {
         "Labor costs",
         "Coordination costs",
       ],
+      icon: "/opportunity/moneycircle.svg",
     },
     {
       title: "Operational Costs",
@@ -42,6 +45,7 @@ function V2_Opportunity() {
         "Multiple system access",
         "Compliance verification",
       ],
+      icon: "/opportunity/document.svg",
     },
   ];
   const bestiaFeatureCards: FeatureCardData[] = [
@@ -52,6 +56,7 @@ function V2_Opportunity() {
       features: ["Quality assurance", "Deal review", "Final verification"],
       variant: "traditional",
       description: "(based on $360,000 average home price)",
+      icon: "/opportunity/humanfind.svg",
     },
     {
       title: "Processing",
@@ -63,21 +68,26 @@ function V2_Opportunity() {
         "Deal structuring",
         "Document automation",
       ],
+      icon: "/opportunity/onecircle.svg",
     },
     {
       title: "Technology Costs",
       price: "$150",
       priceUnit: "/transaction",
       features: ["AI processing", "Data validation", "API calls"],
+      icon: "/opportunity/ai.svg",
     },
   ];
 
   return (
-    <div id="opportunity" className="flex w-full h-[1776px] pt-[216px] pb-[44px] flex-col justify-center items-center bg-white">
+    <div
+      id="opportunity"
+      className="flex w-full h-[1776px] pt-[216px] pb-[44px] flex-col justify-center items-center bg-white"
+    >
       <div className="flex flex-col items-center gap-[64px] self-stretch">
         <div className="flex w-[1440px] px-[196px] flex-col items-center gap-[20px]">
           <span className="self-stretch text-[#E68A00] text-center font-[Rethink Sans] text-[24px] font-bold leading-[160%]">
-            V2_Opportunity
+            The Opportunity
           </span>
           <span className="flex h-[114px] flex-col justify-center self-stretch text-black text-center font-[Urbanist] text-[20px] font-normal leading-[160%]">
             The real estate industry is burdened by inefficiencies of $47
@@ -113,6 +123,7 @@ function V2_Opportunity() {
                   features={card.features}
                   variant={card.variant}
                   description={card.description}
+                  icon={card.icon}
                 />
               ))}
             </div>
@@ -143,6 +154,7 @@ function V2_Opportunity() {
                   features={card.features}
                   variant={card.variant}
                   description={card.description}
+                  icon={card.icon}
                 />
               ))}
             </div>

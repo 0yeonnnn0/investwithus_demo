@@ -16,13 +16,11 @@ interface Logo {
 }
 
 interface Logos3Props {
-  heading?: string;
   logos?: Logo[];
   className?: string;
 }
 
 const Logos3 = ({
-  heading,
   logos = [
     {
       id: "logo-1",
