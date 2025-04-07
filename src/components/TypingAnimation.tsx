@@ -40,7 +40,6 @@ interface TypingTextProps {
   startDelay?: number;
   isPreviousComplete?: boolean;
   onComplete?: () => void;
-  reset?: boolean;
   showCursor?: boolean;
   placeholder?: string;
 }
@@ -51,7 +50,6 @@ export const TypingText = ({
   startDelay = 0,
   isPreviousComplete = true,
   onComplete,
-  reset,
   showCursor = false,
   placeholder = "",
 }: TypingTextProps) => {
