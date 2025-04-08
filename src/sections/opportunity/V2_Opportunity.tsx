@@ -1,4 +1,5 @@
 import FeatureCard from "@/components/blocks/FeatureCard";
+import CostComparison from "@/components/CostComparison";
 
 interface FeatureCardData {
   title: string;
@@ -160,8 +161,8 @@ function V2_Opportunity() {
             </div>
           </div>
         </div>
-        <div className="flex px-[188px] pr-[156px] items-center gap-[80px] self-stretch">
-          <div className="flex w-[491px] h-[210px] flex-col items-start gap-[6px]">
+        <div className="flex w-full px-[188px] pr-[156px] items-center gap-[80px] self-stretch">
+          <div className="flex w-[491px] h-[210px] flex-col items-start gap-[6px] shrink-0">
             <span className="text-black font-[Rethink Sans] text-[58px] font-medium leading-[160%]">
               Bestia has the key
             </span>
@@ -170,6 +171,9 @@ function V2_Opportunity() {
               hyper-delineated, all-encompassing deal-making infrastructure that
               we have spent years developing and fine-tuning.
             </span>
+          </div>
+          <div className="flex-1">
+            <CostComparison />
           </div>
         </div>
       </div>
