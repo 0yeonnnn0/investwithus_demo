@@ -28,7 +28,7 @@ function V2_BusinessModel() {
       className="flex min-w-[1440px] pt-[120px] px-[132px] pb-[60px] flex-row gap-[94px] shrink-0"
     >
       <Image
-        src="/technology/OpenAPN.png"
+        src="/business/business_pic.png"
         alt="Bestia Business Model"
         width={432}
         height={720}

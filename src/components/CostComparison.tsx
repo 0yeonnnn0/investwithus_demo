@@ -88,11 +88,6 @@ function CostComparison() {
     <div className="flex justify-between items-center h-[600px]">
       {costs.map((cost, index) => (
         <div key={cost.title} className="flex flex-col items-center w-[180px]">
-          <span
-            className={`text-black  text-[32px] font-semibold mb-4 ${urbanist.className}`}
-          >
-            ${cost.amount.toLocaleString()}
-          </span>
           <div className="relative w-full flex flex-col items-center">
             <div className="relative w-full flex flex-col items-center">
               <div className="w-12 h-[300px] relative">
@@ -103,7 +98,13 @@ function CostComparison() {
                     height: `${getVisualHeight(cost.amount)}px`,
                     bottom: "1px",
                   }}
-                />
+                >
+                  <span
+                    className={`absolute -top-8 left-1/2 -translate-x-1/2 text-black text-[16px] font-semibold ${urbanist.className}`}
+                  >
+                    ${cost.amount.toLocaleString()}
+                  </span>
+                </div>
                 {/* 주황색 바 (남은 부분) */}
                 <div
                   className="absolute w-12 bg-[#E68A00] border-[#E68A00] bottom-0 border-t rounded-t-lg transition-all duration-[3000ms] ease-out"

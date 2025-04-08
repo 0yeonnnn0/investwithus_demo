@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -8,8 +9,6 @@ const NAV_LINKS = [
   { label: "Technology", href: "#technology" },
   { label: "Business Model", href: "#business" },
   { label: "Team", href: "#team" },
-  { label: "Use of Funds", href: "#funds" },
-  { label: "Invest With Us", href: "#invest" },
 ];
 
 export default function Header() {
@@ -19,6 +18,17 @@ export default function Header() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const pathname = usePathname();
+  const isV1 = pathname === "/v1";
+
+  const navigationLinks = [
+    ...NAV_LINKS,
+    {
+      label: isV1 ? "Value" : "Use of Funds",
+      href: isV1 ? "#value" : "#funds",
+    },
+    { label: "Invest With Us", href: "#invest" },
+  ];
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white shadow-sm">
@@ -44,7 +54,7 @@ export default function Header() {
           {/* 내비게이션 */}
           <nav className="flex justify-end items-center gap-8">
             <ul className="flex items-center gap-6">
-              {NAV_LINKS.map((link) => (
+              {navigationLinks.map((link) => (
                 <li
                   key={link.href}
                   className="text-black text-center font-[Urbanist] text-sm font-semibold whitespace-nowrap"
