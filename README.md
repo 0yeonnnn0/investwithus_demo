@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Invest With Us
 
-## Getting Started
+현대적인 투자 플랫폼을 위한 Next.js 기반의 웹 애플리케이션입니다.
 
-First, run the development server:
+## 기술 스택
 
+- **Frontend Framework**: Next.js 15.2.4
+- **Language**: TypeScript
+- **Styling**: TailwindCSS
+- **UI Components**: 
+  - Radix UI
+  - Embla Carousel
+  - FontAwesome Icons
+- **Development Tools**:
+  - ESLint
+  - Turbopack
+  - PostCSS
+
+## 프로젝트 구조
+
+```
+src/
+├── app/          # Next.js 페이지 및 라우팅
+├── components/   # 재사용 가능한 UI 컴포넌트
+├── sections/     # 페이지 섹션 컴포넌트
+├── lib/         # 유틸리티 라이브러리
+└── utils/       # 헬퍼 함수 및 유틸리티
+```
+
+## 시작하기
+
+1. 의존성 설치:
+```bash
+npm install
+# or
+yarn install
+```
+
+2. 개발 서버 실행:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. 브라우저에서 [http://localhost:3000](http://localhost:3000)으로 접속
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 주요 기능
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 모던한 UI/UX
+- 반응형 디자인
+- 캐러셀 애니메이션
+- 최적화된 폰트 로딩
+- TypeScript 기반 타입 안정성
 
-## Learn More
+## 빌드 및 배포
 
-To learn more about Next.js, take a look at the following resources:
+프로덕션 빌드:
+```bash
+npm run build
+# or
+yarn build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+프로덕션 서버 실행:
+```bash
+npm run start
+# or
+yarn start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 배포
 
-## Deploy on Vercel
+이 프로젝트는 [Vercel Platform](https://vercel.com)을 통해 쉽게 배포할 수 있습니다.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+자세한 배포 방법은 [Next.js 배포 문서](https://nextjs.org/docs/app/building-your-application/deploying)를 참조하세요.
