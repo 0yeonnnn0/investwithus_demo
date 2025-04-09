@@ -105,7 +105,7 @@ function BusinessModelCard({
         damping: 20,
       }}
       viewport={{ once: true, margin: "-100px" }}
-      className="flex w-[212px] h-[294px] px-[20px] py-[56px] flex-col items-start gap-[10px] shrink-0 bg-[#F1F3F7] border rounded-[8px]"
+      className="flex w-[212px] h-[294px] px-[20px] py-[56px] flex-col items-start gap-[10px] shrink-0 bg-[#F1F3F7] border-0 rounded-[8px]"
     >
       <div className="w-[84px] h-[84px] mt-[-20px] ml-[-20px]">
         <Image

@@ -60,7 +60,7 @@ function CostComparison() {
 
   useEffect(() => {
     if (!isInView) return;
-    
+
     setIsVisible(true);
 
     // 퍼센트 애니메이션
@@ -90,7 +90,10 @@ function CostComparison() {
   }, [isInView]);
 
   return (
-    <div ref={comparisonRef} className="flex justify-between items-center w-[525px] h-[600px] gap-2">
+    <div
+      ref={comparisonRef}
+      className="flex justify-between items-center w-[525px] h-[600px] gap-2"
+    >
       {costs.map((cost, index) => (
         <div key={cost.title} className="flex flex-col items-center w-[180px]">
           <div className="relative w-full flex flex-col items-center">
@@ -112,7 +115,14 @@ function CostComparison() {
                   <span
                     className="absolute left-1/2 -translate-x-1/2 text-[#03002A] text-[48px] font-bold transition-all duration-[3000ms] ease-out"
                     style={{
-                      top: "10px",
+                      top: isVisible
+                        ? `${
+                            (getVisualHeight(cost.amount) -
+                              getReducedVisualHeight(cost.reducedAmount)) /
+                              2 -
+                            30
+                          }px`
+                        : "10px",
                       opacity: isVisible ? 1 : 0,
                     }}
                   >
@@ -128,7 +138,9 @@ function CostComparison() {
                       : `${getReducedVisualHeight(cost.reducedAmount)}px`,
                   }}
                 >
-                  <span className="absolute top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[14px] font-semibold whitespace-nowrap">
+                  <span
+                    className={`absolute top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[14px] font-semibold whitespace-nowrap ${urbanist.className}`}
+                  >
                     ${cost.reducedAmount}
                   </span>
                 </div>

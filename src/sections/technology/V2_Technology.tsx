@@ -3,18 +3,13 @@ import { cn } from "@/lib/utils";
 import { rethinkSans, urbanist } from "@/lib/fonts";
 import { usePathname } from "next/navigation";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const technologyCards = [
   {
-    title: "OpenAPN",
-    logo: "/logo/OpenAPN.svg",
-    image: "/bg/OpenAPN_bg.png",
-  },
-  {
-    title: "Parcelity",
-    logo: "/logo/Parcelity.svg",
-    image: "/bg/Parcelity_bg.png",
+    title: "TheHomeOffer",
+    logo: "/logo/TheHomeOffer.svg",
+    image: "/bg/THO_bg.png",
   },
   {
     title: "PropVerified",
@@ -22,9 +17,14 @@ const technologyCards = [
     image: "/bg/PropVerified_bg.png",
   },
   {
-    title: "TheHomeOffer",
-    logo: "/logo/TheHomeOffer.svg",
-    image: "/bg/THO_bg.png",
+    title: "Parcelity",
+    logo: "/logo/Parcelity.svg",
+    image: "/bg/Parcelity_bg.png",
+  },
+  {
+    title: "OpenAPN",
+    logo: "/logo/OpenAPN.svg",
+    image: "/bg/OpenAPN_bg.png",
   },
 ];
 
@@ -120,7 +120,8 @@ function TechnologyCard({
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, {
     once: true,
-    margin: "-100px",
+    margin: "0px 0px -300px 0px", // 화면 하단 300px 전에 감지
+    amount: 0.1, // 요소의 10%만 보여도 감지
   });
 
   const calculateX = (index: number, total: number) => {
@@ -140,38 +141,23 @@ function TechnologyCard({
   };
 
   const cardVariants = {
-    hidden: {
+    initial: {
       opacity: 1,
       scale: 0.85,
       x: 0,
       y: calculateInitialY(index),
-      rotate: calculateInitialRotation(index),
-      transition: {
-        duration: 0,
-      },
-    },
-    spreading: {
-      opacity: 1,
-      scale: 0.85,
-      x: 0,
-      y: calculateInitialY(index),
-      rotate: calculateInitialRotation(index),
-      transition: {
-        duration: 0.2,
-      },
-    },
-    show: {
-      opacity: 1,
-      scale: 1,
-      x: calculateX(index, totalCards),
-      y: 0,
       rotate: 0,
+    },
+    animate: {
+      opacity: 1,
+      scale: [0.85, 0.85, 1],
+      x: [0, 0, calculateX(index, totalCards)],
+      y: [calculateInitialY(index), calculateInitialY(index), 0],
+      rotate: [0, calculateInitialRotation(index), 0],
       transition: {
-        type: "spring",
-        damping: 25,
-        stiffness: 80,
-        duration: 0.5,
-        delay: 0.2,
+        times: [0, 0.3, 1],
+        duration: 3.5,
+        ease: "easeInOut",
       },
     },
   };
@@ -179,9 +165,10 @@ function TechnologyCard({
   return (
     <motion.div
       ref={cardRef}
+      key={`card-${index}`}
       variants={cardVariants}
-      initial="hidden"
-      animate={isInView ? ["spreading", "show"] : "hidden"}
+      initial="initial"
+      animate={isInView ? "animate" : "initial"}
       style={{
         position: "absolute",
         transformOrigin: "center center",

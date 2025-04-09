@@ -1,3 +1,4 @@
+import { BounceAnimation } from "@/components/BounceAnimation";
 import { TypingText } from "@/components/TypingAnimation";
 import { rethinkSans, urbanist } from "@/lib/fonts";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -61,17 +62,21 @@ function V1_HeroSection() {
           Don&apos;t wait for Permission
         </span>
 
-        <button className="flex w-full flex-row justify-center items-center gap-2.5 self-stretch flex-shrink-0 h-[66px] rounded-[15px] bg-[#E68A00]">
-          <FontAwesomeIcon icon={faArrowRight} width={32} height={32} />
-          <span className="text-black font-[Urbanist] text-[24px] font-bold leading-[1.6]">
-            I&apos;m Claiming My Stake
+        <BounceAnimation className="flex w-full flex-col gap-8 items-center">
+          <button className="flex w-full flex-row justify-center items-center gap-2.5 self-stretch flex-shrink-0 h-[66px] rounded-[15px] bg-[#E68A00]">
+            <FontAwesomeIcon icon={faArrowRight} width={32} height={32} />
+            <span
+              className={`text-black ${urbanist.className} text-[24px] font-bold leading-[1.6]`}
+            >
+              I&apos;m Claiming My Stake
+            </span>
+          </button>
+          <span
+            className={`text-white text-center ${urbanist.className} text-[16px] font-normal leading-[1.6]`}
+          >
+            $33,333.00 USD Minimum Investment
           </span>
-        </button>
-        <span
-          className={`text-white text-center ${urbanist.className} text-[16px] font-normal leading-[1.6]`}
-        >
-          $33,333.00 USD Minimum Investment
-        </span>
+        </BounceAnimation>
       </div>
     </div>
   );

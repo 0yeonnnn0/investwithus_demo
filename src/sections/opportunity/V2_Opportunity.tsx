@@ -2,13 +2,26 @@ import FeatureCard from "@/components/blocks/FeatureCard";
 import CostComparison from "@/components/CostComparison";
 import { rethinkSans, urbanist } from "@/lib/fonts";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function V2_Opportunity() {
   const traditionalRef = useRef(null);
   const bestiaRef = useRef(null);
   const isTraditionalInView = useInView(traditionalRef, { once: true });
   const isBestiaInView = useInView(bestiaRef, { once: true });
+  const [canStartBestia, setCanStartBestia] = useState(false);
+
+  useEffect(() => {
+    if (isTraditionalInView) {
+      // Traditional 애니메이션이 완료되는 시점 (가장 긴 딜레이 + 애니메이션 시간)
+      // 마지막 카드 딜레이 2.4초 + 애니메이션 0.7초 = 3.1초
+      const timer = setTimeout(() => {
+        setCanStartBestia(true);
+      }, 3100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isTraditionalInView]);
 
   return (
     <div
@@ -62,7 +75,7 @@ function V2_Opportunity() {
                       transition={{ duration: 0.7, delay: 0.5 }}
                       className="h-px bg-[#B2B2B2]"
                     />
-                    <div className="flex w-[340px] h-[57px] px-[60px] py-[12px] justify-center items-center gap-[10px] shrink-0 rounded-[15px] border-2 border-[#404040]">
+                    <div className="flex w-[340px] h-[57px] px-[60px] py-[12px] justify-center items-center gap-[10px] shrink-0 rounded-[15px] bg-white relative before:absolute before:inset-0 before:p-[2px] before:bg-gradient-to-r before:from-[#E68A00] before:to-[#060052] before:rounded-[15px] before:-z-10 border-2 border-black">
                       <span
                         className={`text-black text-center ${urbanist.className} text-[24px] font-medium`}
                       >
@@ -112,7 +125,7 @@ function V2_Opportunity() {
                 ref={bestiaRef}
                 initial={{ y: -50, opacity: 0 }}
                 animate={
-                  isBestiaInView && isTraditionalInView
+                  isBestiaInView && canStartBestia
                     ? { y: 0, opacity: 1 }
                     : { y: -50, opacity: 0 }
                 }
@@ -124,24 +137,28 @@ function V2_Opportunity() {
                     <motion.div
                       initial={{ width: 0 }}
                       animate={
-                        isBestiaInView && isTraditionalInView
+                        isBestiaInView && canStartBestia
                           ? { width: "295px" }
                           : { width: 0 }
                       }
                       transition={{ duration: 0.7, delay: 0.5 }}
                       className="h-px bg-[#B2B2B2]"
                     />
-                    <div className="flex w-[340px] h-[57px] px-[60px] py-[12px] justify-center items-center gap-[10px] shrink-0 rounded-[15px] border-2 border-[#E68A00]">
-                      <span
-                        className={`text-black text-center ${urbanist.className} text-[24px] font-medium`}
-                      >
-                        Bestia&apos;s Model
-                      </span>
+                    <div className="relative flex w-[340px] h-[57px] justify-center items-center">
+                      <div className="absolute inset-0 rounded-[15px] bg-gradient-to-r from-[#E68A00] to-[#060052]"></div>
+                      <div className="absolute inset-[2px] rounded-[13px] bg-white"></div>
+                      <div className="relative flex px-[60px] py-[12px] justify-center items-center gap-[10px]">
+                        <span
+                          className={`text-black text-center ${urbanist.className} text-[24px] font-medium`}
+                        >
+                          Bestia&apos;s Model
+                        </span>
+                      </div>
                     </div>
                     <motion.div
                       initial={{ width: 0 }}
                       animate={
-                        isBestiaInView && isTraditionalInView
+                        isBestiaInView && canStartBestia
                           ? { width: "295px" }
                           : { width: 0 }
                       }
@@ -157,7 +174,7 @@ function V2_Opportunity() {
                     key={index}
                     initial={{ y: 50, opacity: 0 }}
                     animate={
-                      isBestiaInView && isTraditionalInView
+                      isBestiaInView && canStartBestia
                         ? { y: 0, opacity: 1 }
                         : { y: 50, opacity: 0 }
                     }

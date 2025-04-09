@@ -65,7 +65,7 @@ const FeatureCard = ({
             <div key={index} className="flex flex-row items-center gap-[4px]">
               <FontAwesomeIcon icon={faCheck} width={24} height={24} />
               <span
-                className={`text-[#727272] ${urbanist.className} text-[14px] font-medium leading-[160%]`}
+                className={`text-black ${urbanist.className} text-[14px] font-medium leading-[160%]`}
               >
                 {feature}
               </span>

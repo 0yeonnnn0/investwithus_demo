@@ -5,7 +5,7 @@ function V2_Funds() {
   return (
     <div
       id="funds"
-      className="flex py-[120px] px-[120px] flex-row items-center justify-center gap-[92px] shrink-0"
+      className="flex py-[120px] px-[120px] flex-row items-center justify-center gap-[80px] shrink-0"
     >
       <div className="flex w-[487px] h-[341px] flex-col items-start gap-[32px] shrink-0">
         <div className="flex flex-col items-start gap-[20px] self-stretch">
