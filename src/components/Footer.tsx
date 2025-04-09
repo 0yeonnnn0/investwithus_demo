@@ -1,6 +1,5 @@
 "use client";
 import { rethinkSans } from "@/lib/fonts";
-import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -39,7 +38,7 @@ export default function Footer() {
           {/* 우측 영역 */}
           <div className="flex h-[195px] flex-col justify-center items-start gap-[36px]">
             <p className="text-white text-[40px] font-bold leading-[160%]">
-              Share in Bestia's global terraformation <br /> as an early
+              Share in Bestia&apos;s global terraformation <br /> as an early
               investor.
             </p>
             <div className="flex w-[468px] h-8 flex-row gap-3 justify-center text-white text-center font-[Urbanist] text-[17px] font-normal leading-[160%]">

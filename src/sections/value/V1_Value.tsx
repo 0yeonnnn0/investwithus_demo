@@ -16,15 +16,15 @@ function V1_Value() {
             The Window Is Closing.
           </span>
           <span className="text-white text-center font-[Rethink_Sans] text-[24px] font-semibold leading-[1.6]">
-            We are standing at a crossroads that won't exist tomorrow.
+            We are standing at a crossroads that won&apos;t exist tomorrow.
           </span>
         </div>
         <div className="flex flex-col gap-[20px]">
           <span className="text-white text-center font-[Urbanist] text-[20px] font-normal leading-[1.6]">
-            We've created the neural system for real estate's next era – a
-            data-rich infrastructure that eliminates middlemen, slashes costs,
-            and connects buyers and sellers with unprecedented efficiency. This
-            is working technology creating real value today.
+            We&apos;ve created the neural system for real estate&apos;s next era
+            – a data-rich infrastructure that eliminates middlemen, slashes
+            costs, and connects buyers and sellers with unprecedented
+            efficiency. This is working technology creating real value today.
           </span>
           <span className="text-white text-center font-[Urbanist] text-[24px] font-semibold leading-[1.6]">
             Already generating revenues. And already changing the landscape.
@@ -87,7 +87,7 @@ function V1_Value() {
           The Brutal Truth About Opportunity
         </span>
         <span className="text-white text-center font-[Urbanist] text-[28px] font-medium leading-[1.6]">
-          The question isn't whether this transformation happens.
+          The question isn&apos;t whether this transformation happens.
           <br />
           The question is:{" "}
           <span className="font-bold">Will you own a piece of it?</span>

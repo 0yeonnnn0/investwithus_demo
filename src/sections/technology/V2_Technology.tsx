@@ -32,17 +32,6 @@ const technologyCards = [
 function V2_Technology() {
   const pathname = usePathname();
   const isV1 = pathname === "/v1";
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        delayChildren: 0.3,
-      },
-    },
-  };
 
   return (
     <div

@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function V1_HeroSection() {
   const [firstTextComplete, setFirstTextComplete] = useState(false);
-  const [secondTextComplete, setSecondTextComplete] = useState(false);
 
   return (
     <div
@@ -41,7 +40,6 @@ function V1_HeroSection() {
           showCursor={true}
           placeholder="&nbsp;"
           speed={75}
-          onComplete={() => setSecondTextComplete(true)}
         />
       </div>
       <div className="relative z-20 flex flex-col items-center gap-4 self-stretch w-full mt-100">
