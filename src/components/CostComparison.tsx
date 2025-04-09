@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { urbanist } from "@/lib/fonts";
+import { useInView } from "framer-motion";
 
 interface CostItem {
   title: string;
@@ -40,11 +41,13 @@ function CostComparison() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentRates, setCurrentRates] = useState<number[]>([0, 0, 0]);
   const maxAmount = Math.max(...costs.map((cost) => cost.amount));
+  const comparisonRef = useRef(null);
+  const isInView = useInView(comparisonRef, { once: true });
 
   // 회색 바의 높이를 계산하는 함수
   const getVisualHeight = (amount: number) => {
     const ratio = amount / maxAmount;
-    const minHeight = 80; // 최소 80px
+    const minHeight = 160; // 최소 80px
     const maxHeight = 300; // 최대 300px
     return minHeight + ratio * (maxHeight - minHeight);
   };
@@ -56,6 +59,8 @@ function CostComparison() {
   };
 
   useEffect(() => {
+    if (!isInView) return;
+    
     setIsVisible(true);
 
     // 퍼센트 애니메이션
@@ -82,10 +87,10 @@ function CostComparison() {
     }, interval);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]);
 
   return (
-    <div className="flex justify-between items-center h-[600px]">
+    <div ref={comparisonRef} className="flex justify-between items-center w-[525px] h-[600px] gap-2">
       {costs.map((cost, index) => (
         <div key={cost.title} className="flex flex-col items-center w-[180px]">
           <div className="relative w-full flex flex-col items-center">
@@ -93,39 +98,44 @@ function CostComparison() {
               <div className="w-12 h-[300px] relative">
                 {/* 회색 배경 바 (줄어든 부분) */}
                 <div
-                  className="absolute bg-[#F5F5F5] w-full"
+                  className="absolute bg-[#F5F5F5] w-full border-[#F5F5F5] rounded-t-lg transition-all duration-[3000ms] ease-out"
                   style={{
                     height: `${getVisualHeight(cost.amount)}px`,
                     bottom: "1px",
                   }}
                 >
                   <span
-                    className={`absolute -top-8 left-1/2 -translate-x-1/2 text-black text-[16px] font-semibold ${urbanist.className}`}
+                    className={`absolute -top-8 left-1/2 -translate-x-1/2 text-black text-[16px] ${urbanist.className}`}
                   >
                     ${cost.amount.toLocaleString()}
+                  </span>
+                  <span
+                    className="absolute left-1/2 -translate-x-1/2 text-[#03002A] text-[48px] font-bold transition-all duration-[3000ms] ease-out"
+                    style={{
+                      top: "10px",
+                      opacity: isVisible ? 1 : 0,
+                    }}
+                  >
+                    {currentRates[index]}%
                   </span>
                 </div>
                 {/* 주황색 바 (남은 부분) */}
                 <div
-                  className="absolute w-12 bg-[#E68A00] border-[#E68A00] bottom-0 border-t rounded-t-lg transition-all duration-[3000ms] ease-out"
+                  className="absolute bottom-0 w-12 bg-gradient-to-b from-[#E68A00] to-[#D16800] border-t border-[#E68A00] rounded-t-lg transition-all duration-[3000ms] ease-out"
                   style={{
-                    height: isVisible
-                      ? `${getReducedVisualHeight(cost.reducedAmount)}px`
-                      : `${getVisualHeight(cost.amount)}px`,
+                    height: !isVisible
+                      ? `${getVisualHeight(cost.amount)}px`
+                      : `${getReducedVisualHeight(cost.reducedAmount)}px`,
                   }}
                 >
-                  <span className="absolute top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[14px] font-bold whitespace-nowrap">
+                  <span className="absolute top-2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-[14px] font-semibold whitespace-nowrap">
                     ${cost.reducedAmount}
                   </span>
                 </div>
-                {/* 절감률 */}
-                <span className="absolute top-12 left-1/2 -translate-x-1/2 text-[#03002A] text-[48px] font-bold transition-all duration-[3000ms] ease-out">
-                  {currentRates[index]}%
-                </span>
               </div>
             </div>
-            <div className="w-full h-[1px] bg-black mt-0" />
-            <div className="flex flex-col items-center gap-4 mt-4">
+            <div className="w-[100px] h-[1px] bg-black mt-0" />
+            <div className="flex flex-col items-center gap-2 mt-4">
               <span
                 className={`text-[#666666] ${urbanist.className} text-[16px] font-medium text-center`}
               >
@@ -134,8 +144,8 @@ function CostComparison() {
               <Image
                 src="/icons/arrow-down.svg"
                 alt="arrow down"
-                width={24}
-                height={24}
+                width={20}
+                height={10}
               />
               <span
                 className={`text-black ${urbanist.className} text-[20px] font-bold`}

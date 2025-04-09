@@ -1,18 +1,32 @@
 import { ReactNode } from "react";
-import styles from './BounceAnimation.module.css';
+import { motion } from "framer-motion";
 
 interface BounceAnimationProps {
   children: ReactNode;
   className?: string;
+  duration?: number;
+  bounceHeight?: number;
 }
 
 export const BounceAnimation = ({
   children,
   className = "",
+  duration = 2,
+  bounceHeight = 8,
 }: BounceAnimationProps) => {
   return (
-    <div className={`${styles.bounce} ${className}`}>
+    <motion.div
+      className={className}
+      animate={{
+        y: [0, -bounceHeight, 0],
+      }}
+      transition={{
+        duration: duration,
+        ease: "easeInOut",
+        repeat: Infinity,
+      }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };

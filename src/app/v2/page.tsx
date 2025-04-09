@@ -6,10 +6,12 @@ import V2_Opportunity from "@/sections/opportunity/V2_Opportunity";
 import V2_Team from "@/sections/team/V2_Team";
 import V2_Technology from "@/sections/technology/V2_Technology";
 import V2_Funds from "@/sections/funds/V2_Funds";
+import RollingLogo from "@/components/RollingLogo";
 export default function V2Page() {
   return (
     <div>
       <V2_HeroSection />
+      <RollingLogo />
       <V2_Opportunity />
       <V2_Technology />
       <V2_BusinessModel />

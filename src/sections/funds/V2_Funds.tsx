@@ -1,38 +1,45 @@
+import { rethinkSans, urbanist } from "@/lib/fonts";
 import Image from "next/image";
 
 function V2_Funds() {
   return (
     <div
       id="funds"
-      className="flex py-[120px] px-[120px] flex-row items-center gap-[92px] shrink-0"
+      className="flex py-[120px] px-[120px] flex-row items-center justify-center gap-[92px] shrink-0"
     >
       <div className="flex w-[487px] h-[341px] flex-col items-start gap-[32px] shrink-0">
         <div className="flex flex-col items-start gap-[20px] self-stretch">
-          <span className="text-[#E68A00] font-[Rethink Sans] text-[24px] font-bold leading-[160%]">
-            USE OF FUNDS{" "}
+          <span
+            className={`text-[#E68A00] ${rethinkSans.className} text-[24px] font-bold leading-[160%]`}
+          >
+            USE OF FUNDS
           </span>
-          <span className="text-black font-[Rethink Sans] text-[48px] font-bold leading-[160%]">
+          <span
+            className={`text-black ${rethinkSans.className} text-[48px] font-bold leading-[160%]`}
+          >
             Building Momentum
           </span>
         </div>
-        <span className="text-black font-[Urbanist] text-[20px] font-normal leading-[160%]">
+        <span
+          className={`text-black ${urbanist.className} text-[20px] font-normal leading-[160%]`}
+        >
           Already generating revenues in our home base of California, Bestia is
-          growing with exciting speed. Your investment will allow us to expand
-          our footprint across the entire nation and continue to build out our
-          technologies and team—and increase margins and profitability across
-          the board.{" "}
+          growing with exciting speed. <br /> <br />
+          Your investment will allow us to expand our footprint across the
+          entire nation and continue to build out our technologies and team—and
+          increase margins and profitability across the board.{" "}
         </span>
       </div>
-      <div className="relative w-full flex justify-center items-center">
+      <div className="relative flex justify-center items-center">
         <div className="relative mt-[200px]">
           <Image
             src="/funds/work_1.png"
             alt="Investment Chart"
             width={240}
             height={400}
-            className="rounded-[10px]"
+            className="rounded-[10px] ml-12"
           />
-          <div className="mt-[-32px]">
+          <div className="mt-[-52px]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="155"
@@ -50,7 +57,7 @@ function V2_Funds() {
         <div className="relative z-10 -ml-[40px] -mt-[60px]">
           <div className="relative">
             <svg
-              className="absolute right-0 top-[-60px]"
+              className="absolute right-0 top-[-64px]"
               xmlns="http://www.w3.org/2000/svg"
               width="132"
               height="113"

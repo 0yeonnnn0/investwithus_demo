@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { urbanist } from "@/lib/fonts";
+import { rethinkSans, urbanist } from "@/lib/fonts";
 
 function ReadyToInvest() {
   const pathname = usePathname();
@@ -12,18 +12,22 @@ function ReadyToInvest() {
   return (
     <div
       id="invest"
-      className={`flex min-w-[1440px] px-[122px] flex-col items-start ${
+      className={`flex min-w-[1440px] justify-center mb-[-100px] flex-col items-center ${
         isV1 ? "bg-black" : isV2 ? "bg-white" : ""
       }`}
     >
-      <div className="flex h-[300px] items-center self-stretch">
+      <div className="flex h-[300px] items-center ">
         <div className="flex w-[1196px] h-[300px] px-[92px] py-[64px] items-center rounded-[8px] bg-[#E68A00]">
           <div className="flex w-[700px] flex-col items-start gap-8 shrink-0">
             <div className="flex h-[172px] flex-col justify-center items-start gap-8 shrink-0 self-stretch">
-              <span className="text-white font-[Rethink Sans] text-[64px] font-bold leading-[160%]">
+              <span
+                className={`text-white ${rethinkSans.className} text-[64px] font-semibold leading-[160%]`}
+              >
                 I&apos;m Ready to Invest
               </span>
-              <span className="text-[#212121] font-[Urbanist] text-[20px] font-semibold leading-[160%]">
+              <span
+                className={`text-[#212121] ${urbanist.className} text-[20px] font-semibold leading-[160%]`}
+              >
                 We are accepting minimum investments of $33,333.00 USD. <br />
                 This money will be invested in the form of a Post-Money MFN Safe
                 Agreement.

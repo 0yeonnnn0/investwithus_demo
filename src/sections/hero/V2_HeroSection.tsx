@@ -1,7 +1,6 @@
 "use client";
 import { BounceAnimation } from "@/components/BounceAnimation";
 import { FadeUpAnimation } from "@/components/FadeUpAnimation";
-import RollingLogo from "@/components/RollingLogo";
 import { rethinkSans, urbanist } from "@/lib/fonts";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,14 +11,14 @@ function V2_HeroSection() {
       id="home"
       className={`overflow-hidden bg-white ${rethinkSans.className}`}
     >
-      <div className="min-w-[1440px] w-full max-md:max-w-full">
-        <div className="mt-20 w-full max-md:mt-10 max-md:max-w-full">
+      <div className="min-w-[1440px] w-full py-20 max-md:max-w-full">
+        <div className=" w-full max-md:mt-10 max-md:max-w-full">
           <div className="flex flex-col w-full max-md:max-w-full">
             <div className="flex flex-col items-center self-center max-w-full w-[1080px]">
               <div className="z-10 px-2 w-full text-6xl font-bold leading-snug text-center text-slate-950 max-md:max-w-full max-md:text-4xl">
                 <FadeUpAnimation delay={0.2}>
                   <span
-                    className={`text-center ${rethinkSans.className} font-semibold leading-[2]`}
+                    className={`text-center ${rethinkSans.className} font-bold leading-[2]`}
                   >
                     Share in Bestia&apos;s global terraformation
                   </span>
@@ -28,7 +27,7 @@ function V2_HeroSection() {
               <div className="px-px max-w-full w-[979px]">
                 <div className="flex gap-5 max-md:flex-col max-md:">
                   <div className="relative w-full max-md:ml-0 max-md:w-full">
-                    <FadeUpAnimation delay={0.4}>
+                    <FadeUpAnimation delay={0.6}>
                       <div className="gap-3 self-stretch mr-0 text-6xl font-bold leading-snug text-center text-slate-950 max-md:max-w-full max-md:text-4xl">
                         of real estate as an early investor
                       </div>
@@ -85,7 +84,6 @@ function V2_HeroSection() {
                 </div>
               </div>
             </div>
-            <RollingLogo />
           </div>
         </div>
       </div>

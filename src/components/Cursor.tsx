@@ -12,10 +12,15 @@ const Cursor = () => {
   }, []);
 
   return (
-    <span className={`text-white ${isVisible ? "opacity-100" : "opacity-0"}`}>
+    <span
+      className={`text-white font-thin ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+      style={{ fontSize: "1.2em", fontWeight: 100 }}
+    >
       |
     </span>
   );
 };
 
-export default Cursor; 
+export default Cursor;

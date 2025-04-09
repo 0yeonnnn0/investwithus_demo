@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { urbanist } from "@/lib/fonts";
 
 interface FeatureCardProps {
   title: string;
@@ -39,15 +40,21 @@ const FeatureCard = ({
                 variant === "traditional" ? "" : "h-[20px]"
               }`}
             >
-              <span className="text-[#E68A00] font-[Urbanist] text-[16px] font-medium leading-[120%]">
+              <span
+                className={`text-[#E68A00] ${urbanist.className} text-[16px] mb-[2px] font-medium leading-[120%]`}
+              >
                 {price}
               </span>
-              <span className="text-[#727272] font-[Urbanist] text-[12px] font-medium">
+              <span
+                className={`text-[#727272] ${urbanist.className} text-[14px] font-medium`}
+              >
                 {priceUnit}
               </span>
             </div>
             {variant === "traditional" && description && (
-              <span className="text-[#727272] font-[Urbanist] text-[10px] font-medium">
+              <span
+                className={`text-[#727272] ${urbanist.className} text-[12px] font-medium`}
+              >
                 {description}
               </span>
             )}
@@ -57,7 +64,9 @@ const FeatureCard = ({
           {features.map((feature, index) => (
             <div key={index} className="flex flex-row items-center gap-[4px]">
               <FontAwesomeIcon icon={faCheck} width={24} height={24} />
-              <span className="text-[#727272] font-[Urbanist] text-[14px] font-medium leading-[160%]">
+              <span
+                className={`text-[#727272] ${urbanist.className} text-[14px] font-medium leading-[160%]`}
+              >
                 {feature}
               </span>
             </div>

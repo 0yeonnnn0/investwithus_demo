@@ -1,5 +1,6 @@
 "use client";
 
+import RollingLogo from "@/components/RollingLogo";
 import V2_BusinessModel from "@/sections/business-model/V2_BusinessModel";
 import V1_HeroSection from "@/sections/hero/V1_HeroSection";
 import V2_Opportunity from "@/sections/opportunity/V2_Opportunity";
@@ -11,6 +12,9 @@ export default function V1Page() {
   return (
     <div>
       <V1_HeroSection />
+      <div className="z-20 bg-[#F1F3F7] w-full">
+        <RollingLogo className="pb-4" />
+      </div>
       <V2_Opportunity />
       <V2_Technology />
       <V2_BusinessModel />

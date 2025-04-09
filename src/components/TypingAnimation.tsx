@@ -4,19 +4,22 @@ import Cursor from "./Cursor";
 export const useTypingAnimation = (
   text: string,
   delay: number = 50,
-  startDelay: number = 0
+  startDelay: number = 0,
+  shouldStart: boolean = true
 ) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isStarted, setIsStarted] = useState(false);
 
   useEffect(() => {
+    if (!shouldStart) return;
+
     const startTimer = setTimeout(() => {
       setIsStarted(true);
     }, startDelay);
 
     return () => clearTimeout(startTimer);
-  }, [startDelay]);
+  }, [startDelay, shouldStart]);
 
   useEffect(() => {
     if (!isStarted) return;
@@ -42,6 +45,7 @@ interface TypingTextProps {
   onComplete?: () => void;
   showCursor?: boolean;
   placeholder?: string;
+  speed?: number;
 }
 
 export const TypingText = ({
@@ -52,11 +56,13 @@ export const TypingText = ({
   onComplete,
   showCursor = false,
   placeholder = "",
+  speed = 50,
 }: TypingTextProps) => {
   const { displayText, isComplete, isStarted } = useTypingAnimation(
     text,
-    50,
-    startDelay
+    speed,
+    startDelay,
+    isPreviousComplete
   );
   const shouldShowCursor =
     showCursor && isStarted && (!isComplete || isPreviousComplete);
@@ -68,7 +74,7 @@ export const TypingText = ({
   }, [isComplete, onComplete]);
 
   return (
-    <h1 className={`${className} min-h-[1.4em] animate-bounce}`}>
+    <h1 className={`${className} min-h-[1.4em]`}>
       {displayText || placeholder}
       {shouldShowCursor && <Cursor />}
     </h1>

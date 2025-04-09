@@ -15,7 +15,15 @@ export default function Header() {
   const handleScroll = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const headerOffset = 85;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
   const pathname = usePathname();
@@ -31,8 +39,8 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white shadow-sm">
-      <div className="flex min-w-[1440px] h-[85px] px-[122px] py-6 flex-col items-center gap-[10px] self-stretch bg-white/40 shadow-[0_5px_25px_0_rgba(0,0,0,0.15)] backdrop-blur-[40px]">
+    <header className="fixed top-0 w-full z-50">
+      <div className="flex min-w-[1440px] h-[85px] px-[122px] py-6 flex-col items-center gap-[10px] self-stretch bg-white/60 shadow-[0_2px_15px_0_rgba(0,0,0,0.08)] backdrop-blur-md">
         <div className="flex items-center gap-[304px] shrink-0">
           {/* 로고 */}
           <a
@@ -65,7 +73,7 @@ export default function Header() {
                       e.preventDefault();
                       handleScroll(link.href);
                     }}
-                    className="hover:text-blue-700 transition-colors"
+                    className="hover:underline transition-colors"
                   >
                     {link.label}
                   </a>

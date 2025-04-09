@@ -37,7 +37,7 @@ const logoData = {
 
 function RollingLogo({ className }: { className?: string }) {
   return (
-    <div className={`mt-10 w-full ${className}`}>
+    <div className={`py-12 w-full ${className}`}>
       <div className="text-xl font-light leading-relaxed text-center text-zinc-800 max-md:max-w-full">
         <span
           style={{
