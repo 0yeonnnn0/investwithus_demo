@@ -3,8 +3,6 @@ import { cn } from "@/lib/utils";
 import { rethinkSans, urbanist } from "@/lib/fonts";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 
 const technologyCards = [
   {
@@ -124,13 +122,24 @@ function TechnologyCard({
     return offset * 300; // 최종 위치
   };
 
+  const calculateInitialRotation = (index: number) => {
+    if (index === 0) return 0; // 맨 앞 카드는 회전 없음
+
+    // 뒤로 갈수록 기울기가 점점 커짐
+    const baseRotation = 5; // 기본 기울기
+    const progressiveFactor = 1.5; // 기울기 증가 비율
+    const rotation = baseRotation * Math.pow(progressiveFactor, index - 1);
+
+    return index % 2 === 0 ? -rotation : rotation; // 짝수 인덱스는 왼쪽, 홀수 인덱스는 오른쪽으로 기울어짐
+  };
+
   const cardVariants = {
     hidden: {
-      opacity: index === totalCards - 1 ? 1 : 0, // 마지막 카드만 보이게
+      opacity: index === 0 ? 1 : 0,
       scale: 0.85,
       x: 0,
       y: 0,
-      rotate: index % 2 === 0 ? -15 : 15,
+      rotate: calculateInitialRotation(index),
       zIndex: totalCards - index,
       transition: {
         duration: 0,
@@ -141,11 +150,11 @@ function TechnologyCard({
       scale: 0.85,
       x: 0,
       y: 0,
-      rotate: index % 2 === 0 ? -15 : 15,
+      rotate: calculateInitialRotation(index),
       zIndex: totalCards - index,
       transition: {
-        duration: 0.3,
-        delay: index * 0.1,
+        duration: 0.2,
+        delay: 3,
       },
     },
     show: {
@@ -159,8 +168,8 @@ function TechnologyCard({
         type: "spring",
         damping: 25,
         stiffness: 80,
-        duration: 0.8,
-        delay: index * 0.15,
+        duration: 0.5,
+        delay: 3.2,
       },
     },
   };
@@ -174,7 +183,8 @@ function TechnologyCard({
         position: "absolute",
         transformOrigin: "center center",
         left: "50%",
-        marginLeft: "-140px", // 카드 width의 절반
+        marginLeft: "-140px",
+        zIndex: index === 0 ? 4 : totalCards - index, // 첫 번째 카드가 항상 최상단에 오도록 수정
       }}
       className={cn(
         "group flex w-[280px] h-[416px] flex-col justify-end items-start gap-[10px] shrink-0 overflow-hidden rounded-[8px]",
