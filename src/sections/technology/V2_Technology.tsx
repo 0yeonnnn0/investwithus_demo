@@ -2,7 +2,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { rethinkSans, urbanist } from "@/lib/fonts";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const technologyCards = [
   {
@@ -116,31 +117,35 @@ function TechnologyCard({
   index,
   totalCards,
 }: TechnologyCardProps) {
+  const cardRef = useRef(null);
+  const isInView = useInView(cardRef, {
+    once: true,
+    margin: "-100px",
+  });
+
   const calculateX = (index: number, total: number) => {
     const middleIndex = (total - 1) / 2;
     const offset = index - middleIndex;
-    return offset * 300; // 최종 위치
+    return offset * 300;
   };
 
   const calculateInitialRotation = (index: number) => {
-    if (index === 0) return 0; // 맨 앞 카드는 회전 없음
+    const rotations = [0, 8, 15, 22];
+    const rotation = rotations[index];
+    return index % 2 === 0 ? -rotation : rotation;
+  };
 
-    // 뒤로 갈수록 기울기가 점점 커짐
-    const baseRotation = 5; // 기본 기울기
-    const progressiveFactor = 1.5; // 기울기 증가 비율
-    const rotation = baseRotation * Math.pow(progressiveFactor, index - 1);
-
-    return index % 2 === 0 ? -rotation : rotation; // 짝수 인덱스는 왼쪽, 홀수 인덱스는 오른쪽으로 기울어짐
+  const calculateInitialY = (index: number) => {
+    return index * 2;
   };
 
   const cardVariants = {
     hidden: {
-      opacity: index === 0 ? 1 : 0,
+      opacity: 1,
       scale: 0.85,
       x: 0,
-      y: 0,
+      y: calculateInitialY(index),
       rotate: calculateInitialRotation(index),
-      zIndex: totalCards - index,
       transition: {
         duration: 0,
       },
@@ -149,12 +154,10 @@ function TechnologyCard({
       opacity: 1,
       scale: 0.85,
       x: 0,
-      y: 0,
+      y: calculateInitialY(index),
       rotate: calculateInitialRotation(index),
-      zIndex: totalCards - index,
       transition: {
         duration: 0.2,
-        delay: 3,
       },
     },
     show: {
@@ -163,28 +166,28 @@ function TechnologyCard({
       x: calculateX(index, totalCards),
       y: 0,
       rotate: 0,
-      zIndex: totalCards - index,
       transition: {
         type: "spring",
         damping: 25,
         stiffness: 80,
         duration: 0.5,
-        delay: 3.2,
+        delay: 0.2,
       },
     },
   };
 
   return (
     <motion.div
+      ref={cardRef}
       variants={cardVariants}
       initial="hidden"
-      animate={["spreading", "show"]}
+      animate={isInView ? ["spreading", "show"] : "hidden"}
       style={{
         position: "absolute",
         transformOrigin: "center center",
         left: "50%",
         marginLeft: "-140px",
-        zIndex: index === 0 ? 4 : totalCards - index, // 첫 번째 카드가 항상 최상단에 오도록 수정
+        zIndex: totalCards - index,
       }}
       className={cn(
         "group flex w-[280px] h-[416px] flex-col justify-end items-start gap-[10px] shrink-0 overflow-hidden rounded-[8px]",
@@ -228,7 +231,15 @@ function TechnologyCard({
         <p className="text-white/90 text-[16px] font-medium underline">
           want to know more?
         </p>
-        <button className="flex h-[40px] px-6 py-2 justify-center items-center gap-2 bg-white border rounded-[4px] text-[16px] font-semibold transition-colors hover:bg-[#060052] hover:text-white">
+        <button
+          className="flex h-[40px] px-6 py-2 justify-center items-center gap-2 bg-white border rounded-[4px] text-[16px] font-semibold transition-colors hover:bg-[#060052] hover:text-white"
+          onClick={() => {
+            window.open(
+              "https://calendly.com/marco-dykim/30min?month=2025-04",
+              "_blank"
+            );
+          }}
+        >
           Schedule a meeting
         </button>
       </div>
